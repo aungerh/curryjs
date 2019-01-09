@@ -108,3 +108,21 @@ var add3Curried = curry(add3)
 
 console.log(addCurried(3)(4)) // 7
 console.log(add3Curried(3)(4)(1)) // 8
+
+// let's add some function composition to the mix
+var compose = (f, g) => {
+  return function (x) {
+    return g(f(x))
+  }
+}
+
+var upcase = (str) => {
+  return str.toUpperCase()
+}
+
+var yell = (str) => {
+  return str + '!'
+}
+
+var roar = compose(upcase, yell)
+console.log(roar('hello'))
